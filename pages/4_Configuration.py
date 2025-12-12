@@ -53,7 +53,7 @@ st.markdown("### Select Preset")
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    if st.button("🎯 Match-Like (30/50/20)", use_container_width=True, type="primary"):
+    if st.button("🎯 Match-Like (30/50/20)", width="stretch", type="primary"):
         st.session_state['w_explosiveness'] = 0.30
         st.session_state['w_repeatability'] = 0.50
         st.session_state['w_volume'] = 0.20
@@ -61,7 +61,7 @@ with col1:
         st.rerun()
 
 with col2:
-    if st.button("⚡ Speed Emphasis (40/35/25)", use_container_width=True):
+    if st.button("⚡ Speed Emphasis (40/35/25)", width="stretch"):
         st.session_state['w_explosiveness'] = 0.40
         st.session_state['w_repeatability'] = 0.35
         st.session_state['w_volume'] = 0.25
@@ -69,7 +69,7 @@ with col2:
         st.rerun()
 
 with col3:
-    if st.button("💪 Conditioning (20/30/50)", use_container_width=True):
+    if st.button("💪 Conditioning (20/30/50)", width="stretch"):
         st.session_state['w_explosiveness'] = 0.20
         st.session_state['w_repeatability'] = 0.30
         st.session_state['w_volume'] = 0.50
@@ -101,7 +101,7 @@ with col1:
 
 with col2:
     st.subheader("Actions")
-    if st.button("🔄 Reload Default Data", use_container_width=True):
+    if st.button("🔄 Reload Default Data", width="stretch"):
         from utils import load_default_data
         try:
             raw_df = load_default_data("full_players_df.csv")
@@ -113,7 +113,7 @@ with col2:
         except FileNotFoundError:
             st.error("❌ Could not find full_players_df.csv")
     
-    if st.button("📤 Go to Home to Upload", use_container_width=True):
+    if st.button("📤 Go to Home to Upload", width="stretch"):
         st.switch_page("pages/1_🏠_Home.py")
 
 # Section 3: Documentation

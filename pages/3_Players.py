@@ -429,7 +429,7 @@ def render_intensity_chart(session_data: pd.DataFrame, selected_player_id: Optio
         
         fig.update_layout(title=f"{session_options[selected_session_idx]} – {title_suffix}",
                          xaxis_title="Time", yaxis_title="Intensity")
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
         st.caption("Use this plot to see when intensity peaked and how effort changed.")
     else:
         st.warning("No data available for selected filters.")

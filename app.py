@@ -43,22 +43,22 @@ st.sidebar.markdown("---")
 
 st.sidebar.markdown("## 📊 ANALYSIS")
 with st.sidebar:
-    if st.button("🏠 Home", use_container_width=True, key="nav_home"):
+    if st.button("🏠 Home", width="stretch", key="nav_home"):
         st.switch_page("pages/1_Home.py")
     
-    if st.button("📊 Sessions", use_container_width=True, key="nav_sessions"):
+    if st.button("📊 Sessions", width="stretch", key="nav_sessions"):
         st.switch_page("pages/2_Sessions.py")
     
-    if st.button("👥 Players", use_container_width=True, key="nav_players"):
+    if st.button("👥 Players", width="stretch", key="nav_players"):
         st.switch_page("pages/3_Players.py")
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("## ⚙️ TOOLS & REFERENCE")
 with st.sidebar:
-    if st.button("⚡ Configuration", use_container_width=True, key="nav_config"):
+    if st.button("⚡ Configuration", width="stretch", key="nav_config"):
         st.switch_page("pages/4_Configuration.py")
     
-    if st.button("📚 Documentation", use_container_width=True, key="nav_docs"):
+    if st.button("📚 Documentation", width="stretch", key="nav_docs"):
         st.switch_page("pages/5_Documentation.py")
 
 st.sidebar.markdown("---")
