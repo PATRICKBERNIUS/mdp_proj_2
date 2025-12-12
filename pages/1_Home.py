@@ -10,6 +10,10 @@ from utils import load_and_clean, load_default_data
 from src.display_names import build_player_display_map, add_player_display_column, add_event_display_column
 from src.ui.nav import render_global_nav
 
+
+
+
+
 # Initialize session state if not already done
 if 'data_loaded' not in st.session_state:
     st.session_state['data_loaded'] = False
@@ -22,7 +26,7 @@ if 'w_explosiveness' not in st.session_state:
     st.session_state['w_repeatability'] = 0.50
     st.session_state['w_volume'] = 0.20
 
-st.set_page_config(page_title="Home", layout="wide")
+
 render_global_nav(current_page="home")
 st.title("🏠 Home & Data Loading")
 st.caption("Load your GPS data here and then explore team and player intensity across the app.")
@@ -180,7 +184,7 @@ if st.session_state['data_loaded'] and st.session_state['raw_df'] is not None:
 
         object_cols = missing.select_dtypes(include=["object"]).columns
         missing[object_cols] = missing[object_cols].astype("string")
-        
+
         st.dataframe(missing, width="stretch")
         st.caption("Counts of missing values for each column.")
 
