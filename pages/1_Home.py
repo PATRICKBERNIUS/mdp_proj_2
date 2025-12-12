@@ -152,14 +152,18 @@ if st.session_state['data_loaded'] and st.session_state['raw_df'] is not None:
     
     # Data preview
     st.markdown("### 📋 Sample Data")
-    st.dataframe(raw_df.head(20), height=350, use_container_width=True)
+
+    preview_df = raw_df.head(20).copy()
+    object_cols = preview_df.select_dtypes(include=["object"]).columns
+    preview_df[object_cols] = preview_df[object_cols].astype("string")
+
     st.caption("Preview of the first 20 rows from your dataset.")
     
     # Column info in expander
     with st.expander("Column definitions (click to expand)"):
         col_info = pd.DataFrame({
             'Column': raw_df.columns,
-            'Type': raw_df.dtypes.values,
+            'Type': raw_df.dtypes.astype(str).values,
             'Non-Null': raw_df.notna().sum().values,
             'Null': raw_df.isna().sum().values
         })
