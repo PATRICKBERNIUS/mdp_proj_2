@@ -157,6 +157,7 @@ if st.session_state['data_loaded'] and st.session_state['raw_df'] is not None:
     object_cols = preview_df.select_dtypes(include=["object"]).columns
     preview_df[object_cols] = preview_df[object_cols].astype("string")
 
+    st.dataframe(preview_df, width="stretch", height=350)
     st.caption("Preview of the first 20 rows from your dataset.")
     
     # Column info in expander
@@ -167,12 +168,12 @@ if st.session_state['data_loaded'] and st.session_state['raw_df'] is not None:
             'Non-Null': raw_df.notna().sum().values,
             'Null': raw_df.isna().sum().values
         })
-        st.dataframe(col_info, use_container_width=True, hide_index=True)
+        st.dataframe(col_info, use_container_width="stretch", hide_index=True)
     
     # Missing values summary in expander
     with st.expander("Missing values summary"):
         missing = raw_df.isna().sum().to_frame("Missing count")
-        st.dataframe(missing, use_container_width=True)
+        st.dataframe(missing, use_container_width="stretch")
         st.caption("Counts of missing values for each column.")
 
 else:
