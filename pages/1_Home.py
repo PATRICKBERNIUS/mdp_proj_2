@@ -40,7 +40,7 @@ with col1:
     if st.button("Load Default Data", type="primary", key="load_default"):
         try:
             with st.spinner("Loading default data..."):
-                raw_df = load_default_data("full_players_df.csv")
+                raw_df = load_default_data("data/full_players_df.csv")
                 
                 # Build and apply display name mapping (shared across all pages)
                 player_display_map = build_player_display_map(raw_df, player_col="player_id")
