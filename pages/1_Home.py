@@ -168,12 +168,12 @@ if st.session_state['data_loaded'] and st.session_state['raw_df'] is not None:
             'Non-Null': raw_df.notna().sum().values,
             'Null': raw_df.isna().sum().values
         })
-        st.dataframe(col_info, use_container_width="stretch", hide_index=True)
+        st.dataframe(col_info, width="stretch", hide_index=True)
     
     # Missing values summary in expander
     with st.expander("Missing values summary"):
         missing = raw_df.isna().sum().to_frame("Missing count")
-        st.dataframe(missing, use_container_width="stretch")
+        st.dataframe(missing, width="stretch")
         st.caption("Counts of missing values for each column.")
 
 else:
