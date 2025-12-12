@@ -12,6 +12,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from sklearn.preprocessing import MinMaxScaler
 from typing import List, Optional, Tuple
+from pathlib import Path
 
 from mp_intensity_pipeline import build_session_intensity_df, IntensityWeights
 from src.config import WINDOW_COLOR_MAP, get_window_color
@@ -606,3 +607,12 @@ def get_early_late_interpretation(early_mid_late_values: tuple) -> str:
         return "Strong finish 💪"
     else:
         return "Consistent 📊"
+
+
+
+DATA_DIR = Path(__file__).parent / "data"
+
+@st.cache_data
+def load_default_data(filename: str = "full_players_df.csv.gz") -> pd.DataFrame:
+    path = DATA_DIR / filename
+    return pd.read_csv(path, compression="gzip")
