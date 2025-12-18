@@ -336,7 +336,7 @@ def render_sessions_summary_table(filtered_df: pd.DataFrame, view_mode: str) -> 
     else:
         display_table = display_df
 
-    st.dataframe(display_table, use_container_width=True, hide_index=True)
+    st.dataframe(display_table, width="stretch", hide_index=True)
 
     st.caption("Table sorted by Session intensity (z), highest first. Session tag is based on session intensity z-score thresholds.")
 
@@ -454,7 +454,7 @@ def render_advanced_metrics_section(filtered_df: pd.DataFrame, view_mode: str) -
             sort_asc = [False, False, True]
             advanced_compact_df = advanced_compact_df.sort_values(by=sort_cols, ascending=sort_asc)
             
-            st.dataframe(advanced_compact_df, use_container_width=True, hide_index=True)
+            st.dataframe(advanced_compact_df, width="stretch", hide_index=True)
             
             st.caption(
                 "Each row shows how this session felt for that player: "
@@ -508,7 +508,7 @@ def render_intensity_over_time_section(filtered_df: pd.DataFrame, view_mode: str
         fig.add_hline(y=0, line_dash="dash", line_color="gray", annotation_text="Typical")
         fig.add_hline(y=1, line_dash="dot", line_color="red", annotation_text="Hard")
         fig.add_hline(y=-1, line_dash="dot", line_color="blue", annotation_text="Light")
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
     else:
         # Team average with ±1σ band
         if not filtered_df.empty and 'session_intensity_index' in filtered_df.columns and 'date' in filtered_df.columns:
@@ -563,7 +563,7 @@ def render_intensity_over_time_section(filtered_df: pd.DataFrame, view_mode: str
                 height=400
             )
             
-            st.plotly_chart(fig_team, use_container_width=True)
+            st.plotly_chart(fig_team, width="stretch")
         else:
             st.warning("Cannot compute team average without date and intensity data.")
 
@@ -615,7 +615,7 @@ def render_regression_and_interpretation(filtered_df: pd.DataFrame, view_mode: s
         
         eq_str = f"Session intensity (z) = {a:.2f} + {b:.4f} × Total load"
         r2_str = f"R² = {r2:.3f}"
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
         st.caption(
             f"**Best-fit line:** {eq_str}  |  **{r2_str}**  "
             "Higher R² means total load explains more of the variation in session intensity."
@@ -633,7 +633,7 @@ def render_regression_and_interpretation(filtered_df: pd.DataFrame, view_mode: s
             f"total load explains about **{r2*100:.0f}%** of the variation in session intensity."
         )
     else:
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
         st.caption("Not enough data to compute a reliable regression line for this view.")
 
 
@@ -693,7 +693,7 @@ def render_player_load_overview(filtered_df: pd.DataFrame, view_mode: str) -> No
             
             st.dataframe(
                 player_summary,
-                use_container_width=True,
+                width="stretch",
                 hide_index=True
             )
             st.caption("How often and how hard each player has trained in the current filtered block.")
@@ -806,21 +806,21 @@ def render_performance_highlights_and_risk_radar(filtered_df: pd.DataFrame, view
             if headline_peak10s:
                 st.caption(headline_peak10s)
             st.caption("Top 3 highest 10-second MDP peaks recorded.")
-            st.dataframe(df_top_peak10s, use_container_width=True, hide_index=True)
+            st.dataframe(df_top_peak10s, width="stretch", hide_index=True)
 
         with r1c2:
             st.markdown("#### Best Sustained Effort (Top 3)")
             if headline_sustained:
                 st.caption(headline_sustained)
             st.caption("Top 3 sessions based on 20–30 second MDP average.")
-            st.dataframe(df_top_sustained, use_container_width=True, hide_index=True)
+            st.dataframe(df_top_sustained, width="stretch", hide_index=True)
 
         with r2c1:
             st.markdown("#### Biggest Workloads (Top 3)")
             if headline_load:
                 st.caption(headline_load)
             st.caption("Top 3 sessions with the highest total accumulated load.")
-            st.dataframe(df_top_load, use_container_width=True, hide_index=True)
+            st.dataframe(df_top_load, width="stretch", hide_index=True)
 
         with r2c2:
             if has_mdp_peak:
@@ -828,7 +828,7 @@ def render_performance_highlights_and_risk_radar(filtered_df: pd.DataFrame, view
                 if headline_mdp_peak:
                     st.caption(headline_mdp_peak)
                 st.caption("Top 3 sessions by single highest MDP peak.")
-                st.dataframe(df_top_mdp_peak, use_container_width=True, hide_index=True)
+                st.dataframe(df_top_mdp_peak, width="stretch", hide_index=True)
             else:
                 st.markdown("#### Hardest Sessions Overall (Top 3)")
                 st.caption("Data not available for this view.")
