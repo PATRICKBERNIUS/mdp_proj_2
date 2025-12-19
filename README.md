@@ -4,4 +4,6 @@ Read the full report here: [Executive Summary](deliverables/Executive%20summary.
 
 View the final presentation here: [Presentation](deliverables/Most%20Demanding%20Periods%20-%20Football%20Deck.pptx.pdf)
 
-View the finished Streamlit app here: [View App](https://mdpproj2-seedwsstjr4cnsjvdgg4fy.streamlit.app/Home)
+View the Streamlit app here: [View App](https://mdpproj2-seedwsstjr4cnsjvdgg4fy.streamlit.app/Home)
+
+Note: App is continually being refined.
